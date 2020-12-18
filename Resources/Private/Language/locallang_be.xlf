@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-06-01UTC10:07:040">
+		<header>
+			<authorName>Gerald Rintisch</authorName>
+			<authorEmail>gerald.rintisch@posteo.de</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="option.default">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="option.extrasmall">
+				<source>Extra Small</source>
+			</trans-unit>
+			<trans-unit id="option.small">
+				<source>Small</source>
+			</trans-unit>
+			<trans-unit id="option.medium">
+				<source>Medium</source>
+			</trans-unit>
+			<trans-unit id="option.large">
+				<source>Large</source>
+			</trans-unit>
+
+			<trans-unit id="ratio.16_9">
+				<source>16:9</source>
+			</trans-unit>
+			<trans-unit id="ratio.4_3">
+				<source>4:3</source>
+			</trans-unit>
+			<trans-unit id="ratio.1_1">
+				<source>1:1</source>
+			</trans-unit>
+			<trans-unit id="ratio.free">
+				<source>Free</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,28 @@
+lib.contentElement {
+
+  layoutRootPaths {
+    20 = EXT:picture_extend/Resources/Private/Layouts/
+  }
+
+  partialRootPaths {
+    20 = EXT:picture_extend/Resources/Private/Partials/
+  }
+
+  templateRootPaths {
+    20 = EXT:picture_extend/Resources/Private/Templates/
+  }
+}
+
+################
+#### HELPER ####
+################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:picture_extend/Configuration/TypoScript/ContentElement/Helper/ContentElement.typoscript">
+
+###################################
+#### CONTENT ELEMENT RENDERING ####
+###################################
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:picture_extend/Configuration/TypoScript/ContentElement" extensions="typoscript">
+
+
+
+

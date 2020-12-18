@@ -1,0 +1,36 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rintisch="http://typo3.org/ns/Rintisch/T3Ce/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+<picture
+{f:if(condition:'{pictureClass}', then:' class="{pictureClass}"')}>
+<f:for each="{variants}" key="name" as="variant">
+    <f:variable name="breakpoint">{variant.breakpoint as integer}</f:variable>
+    <f:variable name="width">{variant.width as integer}</f:variable>
+    <f:if condition="{width}">
+        <f:variable name="mediaQuery">{f:if(condition: breakpoint, then: 'media="(min-width: {breakpoint}px)"')}</f:variable>
+        <f:if condition="{variant.sizes}">
+            <f:variable name="srcset" value=""/>
+            <f:for each="{variant.sizes}" key="sizeKey" as="sizeConfig" iteration="iteration">
+                <f:variable name="sizeWidth">{sizeConfig.multiplier as float}</f:variable>
+                <f:variable name="sizeWidth">{sizeWidth * width}</f:variable>
+                <f:variable name="srcset">{srcset}{f:uri.image(image: file, cropVariant: name, maxWidth: sizeWidth)} {sizeKey}{f:if(condition: iteration.isLast,
+                    else: ',')}
+                </f:variable>
+            </f:for>
+        </f:if>
+        <source data-variant="{name}" data-maxwidth="{width}" {mediaQuery->
+        f:format.raw()} srcset="{srcset}">
+    </f:if>
+</f:for>
+<img
+    loading="lazy"
+    src="{f:uri.image(image: file, cropVariant: 'default', maxWidth: variants.default.width)}"
+    width="{rintisch:lastImageInfo(property: 'width')}"
+    height="{rintisch:lastImageInfo(property: 'height')}"
+    intrinsicsize="{rintisch:lastImageInfo(property: 'width')}x{rintisch:lastImageInfo(property: 'height')}"
+    title="{file.properties.title}"
+    alt="{file.properties.alternative}"
+    class="object-cover h-full w-full{f:if(condition: '{rounded} == 1', then: ' rounded')}">
+</picture>
+</html>

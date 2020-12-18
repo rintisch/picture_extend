@@ -1,0 +1,17 @@
+#################################################
+#### CTYPE: T3CE CAROUSEL SMALL ####
+####
+### RESPONSIVE IMAGES ###
+#########################
+lib.contentElement.settings.responsiveimages.contentelements {
+  carousel_small {
+    text_and_image {
+      multiplier {
+        default = 0.5
+        large = 0.5
+        medium = 0.5
+        small = 0.5
+      }
+    }
+  }
+}

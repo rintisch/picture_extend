@@ -1,0 +1,38 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rintisch="http://typo3.org/ns/Rintisch/T3Ce/ViewHelpers"
+    xmlns:e="http://typo3.org/ns/Ssch/Typo3Encore/ViewHelpers"
+    xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:if condition="{gallery.rows}">
+
+    <e:renderWebpackScriptTags entryName="lightbox"/>
+
+    <f:variable name="imagecols">1</f:variable>
+    <f:if condition="{files -> f:count()} > 1">
+        <f:variable name="imagecols">{data.imagecols as integer}</f:variable>
+    </f:if>
+    <f:variable name="columnConfig">{settings.gallery.columns.{imagecols}}</f:variable>
+    <rintisch:data.imageVariants
+        as="variants"
+        variants="{variants}"
+        multiplier="{columnConfig.multiplier}"
+        gutters="{columnConfig.gutters}"
+        corrections="{columnConfig.corrections}"/>
+
+    <f:variable name="rounded">1</f:variable>
+
+    <div
+        class="js-gallery w-full relative  overflow-hidden grid grid-cols-{imagecols} gap-2"
+        data-ce-columns="{gallery.count.columns}"
+        data-ce-images="{gallery.count.files}">
+
+        <f:for each="{files}" as="file">
+            <div class="{columnConfig.class} h-full">
+                <f:render partial="Media/Type/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+            </div>
+        </f:for>
+    </div>
+</f:if>
+</html>

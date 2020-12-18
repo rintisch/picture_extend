@@ -1,0 +1,159 @@
+##################################################
+### CONTENT ELEMENT SETTINGS                   ###
+### Shared settings for TYPO3 content elements ###
+##################################################
+lib.contentElement = FLUIDTEMPLATE
+lib.contentElement.settings {
+  lightbox {
+    cssClass = {$plugin.picture_extend_contentelements.lightbox.cssClass}
+    prefix = {$plugin.picture_extend_contentelements.lightbox.prefix}
+    image {
+      maxHeight = {$plugin.picture_extend_contentelements.lightbox.image.maxHeight}
+      maxWidth = {$plugin.picture_extend_contentelements.lightbox.image.maxWidth}
+    }
+  }
+
+  media {
+    additionalConfig {
+      autoplay = {$plugin.picture_extend_contentelements.media.additionalConfig.autoplay}
+      controls = {$plugin.picture_extend_contentelements.media.additionalConfig.controls}
+      loop = {$plugin.picture_extend_contentelements.media.additionalConfig.loop}
+      enablejsapi = {$plugin.picture_extend_contentelements.media.additionalConfig.enablejsapi}
+      showinfo = {$plugin.picture_extend_contentelements.media.additionalConfig.showinfo}
+      relatedVideos = {$plugin.picture_extend_contentelements.media.additionalConfig.relatedVideos}
+      modestbranding = {$plugin.picture_extend_contentelements.media.additionalConfig.modestbranding}
+    }
+  }
+
+  gallery {
+    columns {
+      1 {
+        class = {$plugin.picture_extend_contentelements.gallery.columns.1.class}
+      }
+
+      2 {
+        class = {$plugin.picture_extend_contentelements.gallery.columns.2.class}
+        multiplier {
+          default = 0.5
+          large = 0.5
+          medium = 0.5
+          small = 0.5
+          extrasmall = 0.5
+        }
+
+        gutters {
+          default = 16
+          large = 16
+          medium = 16
+          small = 16
+          extrasmall = 16
+        }
+      }
+
+      3 {
+        class = {$plugin.picture_extend_contentelements.gallery.columns.3.class}
+        multiplier {
+          default = 0.3333
+          large = 0.3333
+          medium = 0.3333
+          small = 0.3333
+          extrasmall = 0.3333
+        }
+
+        gutters {
+          default = 16
+          large = 16
+          medium = 16
+          small = 16
+          extrasmall = 16
+        }
+      }
+
+      4 {
+        class = {$plugin.picture_extend_contentelements.gallery.columns.4.class}
+        multiplier {
+          default = 0.25
+          large = 0.25
+          medium = 0.5
+          small = 0.5
+          extrasmall = 0.5
+        }
+
+        gutters {
+          default = 16
+          large = 16
+          medium = 16
+          small = 16
+          extrasmall = 16
+        }
+      }
+
+      5 {
+        class = {$plugin.picture_extend_contentelements.gallery.columns.5.class}
+        multiplier {
+          default = 0.2
+          large = 0.2
+          medium = 0.3333
+          small = 0.3333
+          extrasmall = 0.5
+        }
+
+        gutters {
+          default = 16
+          large = 16
+          medium = 16
+          small = 16
+          extrasmall = 16
+        }
+      }
+
+      6 {
+        class = {$plugin.picture_extend_contentelements.gallery.columns.6.class}
+        multiplier {
+          default = 0.1666
+          large = 0.16666
+          medium = 0.3333
+          small = 0.3333
+          extrasmall = 0.5
+        }
+
+        gutters {
+          default = 16
+          large = 16
+          medium = 16
+          small = 16
+          extrasmall = 16
+        }
+      }
+    }
+  }
+
+  responsiveimages {
+    variants {
+      default {
+        breakpoint = 1200
+        width = 1100
+      }
+
+      large {
+        breakpoint = 992
+        width = 920
+      }
+
+      medium {
+        breakpoint = 768
+        width = 680
+      }
+
+      small {
+        breakpoint = 576
+        width = 500
+      }
+
+      extrasmall {
+        breakpoint = unset
+        width = 374
+      }
+    }
+  }
+}

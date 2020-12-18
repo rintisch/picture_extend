@@ -1,0 +1,35 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rintisch="http://typo3.org/ns/Rintisch/T3Ce/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+    <f:if condition="{file.properties.link}">
+        <f:then>
+            <f:link.typolink parameter="{file.properties.link}" title="{file.properties.title}">
+                <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+            </f:link.typolink>
+        </f:then>
+        <f:else>
+            <f:if condition="{data.image_zoom}">
+                <f:then>
+                    <a
+                        href="{f:uri.image(image: file, maxHeight: settings.lightbox.image.maxHeight, maxWidth: settings.lightbox.image.maxWidth)}"
+                        title="{file.properties.title}"
+                        data-caption="{file.description -> f:format.nl2br()}">
+                        <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+                    </a>
+                </f:then>
+                <f:else>
+                    <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:comment>
+    <f:if condition="{file.description}">
+        <figcaption class="image-caption">
+            {file.description -> f:format.nl2br()}
+        </figcaption>
+    </f:if>
+    </f:comment>
+</figure>
+</html>
