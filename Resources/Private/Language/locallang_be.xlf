@@ -9,9 +9,6 @@
 			<trans-unit id="option.default">
 				<source>Default</source>
 			</trans-unit>
-			<trans-unit id="option.extrasmall">
-				<source>Extra Small</source>
-			</trans-unit>
 			<trans-unit id="option.small">
 				<source>Small</source>
 			</trans-unit>

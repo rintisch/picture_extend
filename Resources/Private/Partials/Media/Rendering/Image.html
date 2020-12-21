@@ -1,36 +1,57 @@
 <html
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rintisch="http://typo3.org/ns/Rintisch/T3Ce/ViewHelpers"
+    xmlns:pict="http://typo3.org/ns/Rintisch/PictureExtend/ViewHelpers"
+    xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
     data-namespace-typo3-fluid="true">
-<picture
-{f:if(condition:'{pictureClass}', then:' class="{pictureClass}"')}>
-<f:for each="{variants}" key="name" as="variant">
-    <f:variable name="breakpoint">{variant.breakpoint as integer}</f:variable>
-    <f:variable name="width">{variant.width as integer}</f:variable>
-    <f:if condition="{width}">
-        <f:variable name="mediaQuery">{f:if(condition: breakpoint, then: 'media="(min-width: {breakpoint}px)"')}</f:variable>
-        <f:if condition="{variant.sizes}">
-            <f:variable name="srcset" value=""/>
-            <f:for each="{variant.sizes}" key="sizeKey" as="sizeConfig" iteration="iteration">
-                <f:variable name="sizeWidth">{sizeConfig.multiplier as float}</f:variable>
-                <f:variable name="sizeWidth">{sizeWidth * width}</f:variable>
-                <f:variable name="srcset">{srcset}{f:uri.image(image: file, cropVariant: name, maxWidth: sizeWidth)} {sizeKey}{f:if(condition: iteration.isLast,
-                    else: ',')}
-                </f:variable>
-            </f:for>
-        </f:if>
-        <source data-variant="{name}" data-maxwidth="{width}" {mediaQuery->
-        f:format.raw()} srcset="{srcset}">
+
+<f:comment><!-- Width for large --></f:comment>
+<f:variable name="lgWidth">
+    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
+        <f:then>
+            {settings.responsiveimages.contentelements.{data.CType}.width.lg}
+        </f:then>
+        <f:else>
+            1600
+        </f:else>
     </f:if>
-</f:for>
-<img
-    loading="lazy"
-    src="{f:uri.image(image: file, cropVariant: 'default', maxWidth: variants.default.width)}"
-    width="{rintisch:lastImageInfo(property: 'width')}"
-    height="{rintisch:lastImageInfo(property: 'height')}"
-    intrinsicsize="{rintisch:lastImageInfo(property: 'width')}x{rintisch:lastImageInfo(property: 'height')}"
-    title="{file.properties.title}"
-    alt="{file.properties.alternative}"
-    class="object-cover h-full w-full{f:if(condition: '{rounded} == 1', then: ' rounded')}">
-</picture>
+</f:variable>
+
+<f:comment><!-- Width for medium --></f:comment>
+<f:variable name="mdWidth">
+    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
+        <f:then>
+            {settings.responsiveimages.contentelements.{data.CType}.width.md}</f:then>
+        <f:else>1200</f:else>
+    </f:if>
+</f:variable>
+
+<f:comment><!-- Width for small --></f:comment>
+<f:variable name="smWidth">
+    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.sm}">
+        <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.sm}</f:then>
+        <f:else>768</f:else>
+    </f:if>
+</f:variable>
+
+<f:comment><!-- Width for extrasmall --></f:comment>
+<f:variable name="xsWidth">
+    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.xs}">
+        <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.xs}</f:then>
+        <f:else>576</f:else>
+    </f:if>
+</f:variable>
+
+<i:image
+    image="{file}"
+    width="1600"
+    pictureClass="{pictureClass}"
+    addWebp="1"
+    loading="1"
+    sources="{
+        lg: {width: '{lgWidth}', cropVariant: 'large'},
+        md: {width: '{mdWidth}', cropVariant: 'medium'},
+        sm: {width: '{smWidth}', cropVariant: 'small'},
+        xs: {width: '{xsWidth}', cropVariant: 'small'}
+    }"
+    alt="{file.properties.alternative}"/>
 </html>

@@ -1,11 +1,10 @@
 <html
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rintisch="http://typo3.org/ns/Rintisch/T3Ce/ViewHelpers"
-    data-namespace-typo3-fluid="true">
+    data-namespace-typo3-fluid="true"><f:debug>{_all}</f:debug>
     <f:if condition="{file.properties.link}">
         <f:then>
             <f:link.typolink parameter="{file.properties.link}" title="{file.properties.title}">
-                <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+                <f:render partial="Media/Rendering/Image" arguments="{file: file, dsettings: settings, pictureClass: pictureClass}"/>
             </f:link.typolink>
         </f:then>
         <f:else>
@@ -15,21 +14,13 @@
                         href="{f:uri.image(image: file, maxHeight: settings.lightbox.image.maxHeight, maxWidth: settings.lightbox.image.maxWidth)}"
                         title="{file.properties.title}"
                         data-caption="{file.description -> f:format.nl2br()}">
-                        <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+                        <f:render partial="Media/Rendering/Image" arguments="{file: file, settings: settings,pictureClass: pictureClass}"/>
                     </a>
                 </f:then>
                 <f:else>
-                    <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, variants: variants, rounded: rounded}"/>
+                    <f:render partial="Media/Rendering/Image" arguments="{file: file, settings: settings, pictureClass: pictureClass}"/>
                 </f:else>
             </f:if>
         </f:else>
     </f:if>
-    <f:comment>
-    <f:if condition="{file.description}">
-        <figcaption class="image-caption">
-            {file.description -> f:format.nl2br()}
-        </figcaption>
-    </f:if>
-    </f:comment>
-</figure>
 </html>

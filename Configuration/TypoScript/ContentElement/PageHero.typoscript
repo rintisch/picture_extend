@@ -5,11 +5,11 @@
 #########################
 lib.contentElement.settings.responsiveimages.contentelements {
   page_hero {
-    multiplier {
-      default = 2
-      large = 1
-      medium = 1
-      small = 1
+    width {
+      lg = 1600
+      md = 1200
+      sm = 768
+      xs = 576
     }
   }
 }

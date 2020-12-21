@@ -1,28 +1,37 @@
-lib.contentElement {
-
-  layoutRootPaths {
-    20 = EXT:picture_extend/Resources/Private/Layouts/
-  }
-
-  partialRootPaths {
-    20 = EXT:picture_extend/Resources/Private/Partials/
-  }
-
-  templateRootPaths {
-    20 = EXT:picture_extend/Resources/Private/Templates/
-  }
-}
-
-################
-#### HELPER ####
-################
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:picture_extend/Configuration/TypoScript/ContentElement/Helper/ContentElement.typoscript">
-
 ###################################
 #### CONTENT ELEMENT RENDERING ####
 ###################################
-<INCLUDE_TYPOSCRIPT: source="DIR:EXT:picture_extend/Configuration/TypoScript/ContentElement" extensions="typoscript">
+@import "EXT:picture_extend/Configuration/TypoScript/ContentElement/*.typoscript"
 
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:picture/Configuration/TypoScript/setup.typoscript'
+
+####################
+#### ROOT PATHS ####
+####################
+lib.contentElement {
+  partialRootPaths {
+    52 = EXT:picture_extend/Resources/Private/Partials/
+  }
+}
+
+##############################
+#### EXT:picture SETTINGS ####
+##############################
+plugin.tx_picture {
+  retina {
+    2 = 2x
+  }
+
+  breakpoints {
+    xs = 0
+    sm = 576
+    md = 768
+    lg = 1200
+  }
+}
 
 
 
