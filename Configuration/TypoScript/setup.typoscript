@@ -27,9 +27,9 @@ plugin.tx_picture {
 
   breakpoints {
     xs = 0
-    sm = 576
+    sm = 640
     md = 768
-    lg = 1200
+    lg = 1280
   }
 }
 

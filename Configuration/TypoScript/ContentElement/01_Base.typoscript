@@ -5,11 +5,9 @@
 lib.contentElement = FLUIDTEMPLATE
 lib.contentElement.settings {
   lightbox {
-    cssClass = {$plugin.picture_extend_contentelements.lightbox.cssClass}
-    prefix = {$plugin.picture_extend_contentelements.lightbox.prefix}
     image {
-      maxHeight = {$plugin.picture_extend_contentelements.lightbox.image.maxHeight}
-      maxWidth = {$plugin.picture_extend_contentelements.lightbox.image.maxWidth}
+      maxHeight = {$lightbox.maxHeight}
+      maxWidth = {$lightbox.maxWidth}
     }
   }
 
