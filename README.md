@@ -1,8 +1,9 @@
 Picute extend
 ==============================================================
 
-This extension contains extends EXT:picture of b13 with the structure to use it properly.
+This extension contains extends EXT:picture of b13 with the structure to use it properly on multiple pages with similar requirements.
 
+**Hint**: This extension is under heavy development, I'm still learning a lot and I am not tagging anything (so there is only the master branch). So at the moment you cannot rely on it ;)
 
 
 ## Cropping
@@ -12,7 +13,9 @@ For cropping [EXT:cropvariantsbuilder](https://github.com/josefglatz/cropvariant
 
 Two steps are needed:
 1. The site package has a `EXT:the_site_package/Configuration/ImageManipulation/CropVariants.yaml`. In this file the needed CropVariants are defined.
-1. The site package has a `EXT:the_site_package/Configuration/TCA/Overrides/content_element_name_of_content_element.php` (name doesn't really matter...). It defines the crop variants for the image field of the content element.
+1. The site package has e.g. a `EXT:the_site_package/Configuration/TCA/Overrides/content_element_name_of_content_element.php` (name doesn't really matter...). It defines the crop variants for the image field of a content element.
+
+For further instructions watch the documentation of the [EXT:cropvariantsbuilder](https://github.com/josefglatz/cropvariantsbuilder).
 
 
 ## Definition of output dimensions
