@@ -4,7 +4,7 @@
     <f:if condition="{file.properties.link}">
         <f:then>
             <f:link.typolink parameter="{file.properties.link}" title="{file.properties.title}">
-                <f:render partial="Media/Rendering/Image" arguments="{file: file, dsettings: settings, pictureClass: pictureClass}"/>
+                <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, pictureClass: pictureClass}"/>
             </f:link.typolink>
         </f:then>
         <f:else>
@@ -14,11 +14,11 @@
                         href="{f:uri.image(image: file, maxHeight: settings.lightbox.image.maxHeight, maxWidth: settings.lightbox.image.maxWidth)}"
                         title="{file.properties.title}"
                         data-caption="{file.description -> f:format.nl2br()}">
-                        <f:render partial="Media/Rendering/Image" arguments="{file: file, settings: settings,pictureClass: pictureClass}"/>
+                        <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings,pictureClass: pictureClass}"/>
                     </a>
                 </f:then>
                 <f:else>
-                    <f:render partial="Media/Rendering/Image" arguments="{file: file, settings: settings, pictureClass: pictureClass}"/>
+                    <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, pictureClass: pictureClass}"/>
                 </f:else>
             </f:if>
         </f:else>

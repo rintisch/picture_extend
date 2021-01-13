@@ -7,21 +7,16 @@
 <f:comment><!-- Width for large --></f:comment>
 <f:variable name="lgWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
-        <f:then>
-            {settings.responsiveimages.contentelements.{data.CType}.width.lg}
-        </f:then>
-        <f:else>
-            1600
-        </f:else>
+        <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.lg}</f:then>
+        <f:else>{settings.responsiveimages.default.width.lg}</f:else>
     </f:if>
 </f:variable>
 
 <f:comment><!-- Width for medium --></f:comment>
 <f:variable name="mdWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
-        <f:then>
-            {settings.responsiveimages.contentelements.{data.CType}.width.md}</f:then>
-        <f:else>1200</f:else>
+        <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.md}</f:then>
+        <f:else>{settings.responsiveimages.default.width.lg}</f:else>
     </f:if>
 </f:variable>
 
@@ -29,7 +24,7 @@
 <f:variable name="smWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.sm}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.sm}</f:then>
-        <f:else>768</f:else>
+        <f:else>{settings.responsiveimages.default.width.sm</f:else>
     </f:if>
 </f:variable>
 
@@ -37,21 +32,21 @@
 <f:variable name="xsWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.xs}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.xs}</f:then>
-        <f:else>576</f:else>
+        <f:else>{settings.responsiveimages.default.width.xs}</f:else>
     </f:if>
 </f:variable>
 
 <i:image
     image="{file}"
-    width="1600"
+    width="{settings.responsiveimages.default.width.lg}"
     pictureClass="{pictureClass}"
-    addWebp="1"
-    loading="1"
+    addWebp="{settings.responsiveimages.addWebP}"
+    loading="{settings.responsiveimages.lazyLoading}"
     sources="{
-        lg: {width: '{lgWidth}', cropVariant: 'large'},
-        md: {width: '{mdWidth}', cropVariant: 'medium'},
-        sm: {width: '{smWidth}', cropVariant: 'small'},
-        xs: {width: '{xsWidth}', cropVariant: 'small'}
+        lg: {width: '{lgWidth}', cropVariant: 'lg'},
+        md: {width: '{mdWidth}', cropVariant: 'md'},
+        sm: {width: '{smWidth}', cropVariant: 'sm'},
+        xs: {width: '{xsWidth}', cropVariant: 'sm'}
     }"
-    alt="{file.properties.alternative}"/>
+    alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"/>
 </html>

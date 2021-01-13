@@ -1,8 +1,3 @@
-###################################
-#### CONTENT ELEMENT RENDERING ####
-###################################
-@import "EXT:picture_extend/Configuration/TypoScript/ContentElement/*.typoscript"
-
 ######################
 #### DEPENDENCIES ####
 ######################
@@ -33,5 +28,16 @@ plugin.tx_picture {
   }
 }
 
+lib.contentElement.settings.responsiveimages {
+  addWebP = 1
+  lazyLoading = 1
+
+  default.width {
+    xs = 576
+    sm = 768
+    md = 1280
+    lg = 1600
+  }
+}
 
 
