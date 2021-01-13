@@ -1,9 +1,0 @@
-############################################
-#### CTYPE:accordion ####
-####
-### RESPONSIVE IMAGES ###
-#########################
-lib.contentElement.settings.responsiveimages.contentelements {
-  accordion {
-  }
-}
