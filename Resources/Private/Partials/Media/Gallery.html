@@ -4,7 +4,9 @@
     data-namespace-typo3-fluid="true">
 <f:if condition="{gallery.rows}">
 
-    <e:renderWebpackScriptTags entryName="lightbox"/>
+    <f:if condition="{data.image_zoom}">
+        <e:renderWebpackScriptTags entryName="lightbox"/>
+    </f:if>
 
     <f:variable name="imagecols">1</f:variable>
     <f:if condition="{files -> f:count()} > 1">
