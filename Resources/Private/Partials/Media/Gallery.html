@@ -16,7 +16,7 @@
         class="js-gallery w-full relative overflow-hidden grid grid-cols-{imagecols} gap-2">
         <f:for each="{files}" as="file">
             <div class="w-full h-full">
-                <f:render partial="Media/Type/Image" arguments="{file: file, data: data, settings: settings,  pictureClass: 'rounded flex overflow-hidden'}"/>
+                <f:render partial="Media/Type/Image" arguments="{file: file, data: data, settings: settings,  pictureClass: 'rounded flex overflow-hidden', imageClass: ''}"/>
             </div>
         </f:for>
     </div>

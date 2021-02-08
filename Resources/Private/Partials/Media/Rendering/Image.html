@@ -36,17 +36,26 @@
     </f:if>
 </f:variable>
 
-<i:image
-    image="{file}"
-    width="{settings.responsiveimages.default.width.lg}"
-    pictureClass="{pictureClass}"
-    addWebp="{settings.responsiveimages.addWebP}"
-    loading="{settings.responsiveimages.lazyLoading}"
-    sources="{
+<f:if condition="{file.originalFile.properties.extension} == svg">
+    <f:then>
+        <pict:inlineSvg image="{file}"/>
+    </f:then>
+    <f:else>
+        <i:image
+            image="{file}"
+            width="{settings.responsiveimages.default.width.lg}"
+            pictureClass="{pictureClass}"
+            class="{imageClass}"
+            addWebp="{settings.responsiveimages.addWebP}"
+            loading="{settings.responsiveimages.lazyLoading}"
+            sources="{
         lg: {width: '{lgWidth}', cropVariant: 'lg'},
         md: {width: '{mdWidth}', cropVariant: 'md'},
         sm: {width: '{smWidth}', cropVariant: 'sm'},
         xs: {width: '{xsWidth}', cropVariant: 'sm'}
     }"
-    alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"/>
+            alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"/>
+
+    </f:else>
+</f:if>
 </html>
