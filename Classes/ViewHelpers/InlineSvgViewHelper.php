@@ -42,6 +42,7 @@ class InlineSvgViewHelper extends AbstractViewHelper
         $this->registerArgument('class', 'string', 'Css class for the svg');
         $this->registerArgument('width', 'string', 'Width of the svg.', false);
         $this->registerArgument('height', 'string', 'Height of the svg.', false);
+        $this->registerArgument('fillWith','string', 'Color to fill the svg');
     }
 
     /**
@@ -87,6 +88,15 @@ class InlineSvgViewHelper extends AbstractViewHelper
             $svgElement = self::setAttribute($svgElement, 'class', filter_var(trim((string)$arguments['class']), FILTER_SANITIZE_STRING));
             $svgElement = self::setAttribute($svgElement, 'width', (int)$arguments['width']);
             $svgElement = self::setAttribute($svgElement, 'height', (int)$arguments['height']);
+
+            if($arguments['fillWith']){
+                $filledElements = $svgElement->xpath('//*[@fill]');
+                if($filledElements){
+                    foreach ($filledElements as $filledElement) {
+                        self::setAttribute($filledElement, 'fill', (string)$arguments['fillWith']);
+                    }
+                }
+            }
 
             // remove xml version tag
             $domXml = dom_import_simplexml($svgElement);
