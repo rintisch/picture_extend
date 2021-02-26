@@ -28,15 +28,25 @@ plugin.tx_picture {
   }
 }
 
-lib.contentElement.settings.responsiveimages {
-  addWebP = 1
-  lazyLoading = 1
+lib.contentElement.settings {
 
-  default.width {
-    xs = 576
-    sm = 768
-    md = 1280
-    lg = 1600
+  // define maxHeight and maxWidth in your `config.yaml` as described in:
+  // https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.4/Feature-91080-SiteSettingsAsTsConstantsAndInTsConfig.html
+  lightbox {
+    maxHeight = {$lightbox.maxHeight}
+    maxWidth = {$lightbox.maxWidth}
+  }
+
+  responsiveimages {
+    addWebP = 1
+    lazyLoading = 1
+
+    default.width {
+      xs = 576
+      sm = 768
+      md = 1280
+      lg = 1600
+    }
   }
 }
 

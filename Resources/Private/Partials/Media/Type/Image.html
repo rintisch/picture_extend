@@ -11,7 +11,7 @@
             <f:if condition="{data.image_zoom}">
                 <f:then>
                     <a
-                        href="{f:uri.image(image: file, maxHeight: settings.lightbox.image.maxHeight, maxWidth: settings.lightbox.image.maxWidth)}"
+                        href="{f:uri.image(image: file, maxHeight: settings.lightbox.maxHeight, maxWidth: settings.lightbox.maxWidth)}"
                         title="{file.properties.title}"
                         data-caption="{file.description -> f:format.nl2br()}">
                         <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings,pictureClass: pictureClass, imageClass: imageClass}"/>

@@ -5,6 +5,15 @@ This extension contains extends EXT:picture of b13 with the structure to use it 
 
 **Hint**: This extension is under heavy development, I'm still learning a lot and I am not tagging anything (so there is only the master branch). So at the moment you cannot rely on it ;)
 
+## Lightbox
+This extension uses [baguetteBox](https://github.com/feimosi/baguetteBox.js) as lightbox script.
+To use it with webpack encore include the following in your `webpack.config.js` (path might need to be adapted depending on your setup):
+
+```
+    .addEntry('lightbox', './public/typo3conf/ext/picture_extend/Resources/Private/JavaScript/lightbox.js')
+```
+
+Now a gallery with activated `image_zoom` will have a lightbox.
 
 ## Cropping
 **Usage:** Is used by editors in TYPO3 backend to set image cropping for different viewports.
