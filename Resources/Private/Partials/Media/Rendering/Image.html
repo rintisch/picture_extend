@@ -4,6 +4,14 @@
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
+<f:comment><!-- Width for extra large --></f:comment>
+<f:variable name="xlWidth">
+    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.xl}">
+        <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.xl}</f:then>
+        <f:else>{settings.responsiveimages.default.width.xl}</f:else>
+    </f:if>
+</f:variable>
+
 <f:comment><!-- Width for large --></f:comment>
 <f:variable name="lgWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
@@ -24,7 +32,7 @@
 <f:variable name="smWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.sm}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.sm}</f:then>
-        <f:else>{settings.responsiveimages.default.width.sm</f:else>
+        <f:else>{settings.responsiveimages.default.width.sm}</f:else>
     </f:if>
 </f:variable>
 
@@ -43,12 +51,13 @@
     <f:else>
         <i:image
             image="{file}"
-            width="{settings.responsiveimages.default.width.lg}"
+            width="{xlWidth}"
             pictureClass="{pictureClass}"
             class="{imageClass}"
             addWebp="{settings.responsiveimages.addWebP}"
             loading="{settings.responsiveimages.lazyLoading}"
             sources="{
+        xl: {width: '{xlWidth}', cropVariant: 'xl'},
         lg: {width: '{lgWidth}', cropVariant: 'lg'},
         md: {width: '{mdWidth}', cropVariant: 'md'},
         sm: {width: '{smWidth}', cropVariant: 'sm'},
