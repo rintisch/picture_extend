@@ -4,17 +4,6 @@
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
     data-namespace-typo3-fluid="true">
 <f:comment>
-    <!-- WIDTH FOR EXTRA LARGE -->
-</f:comment>
-<f:variable name="xlWidth">
-    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.xl}">
-        <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.xl}</f:then>
-        <f:else>{settings.responsiveimages.default.width.xl}</f:else>
-    </f:if>
-</f:variable>
-<f:variable name="xlWidth">{xlWidth / imageCols}</f:variable>
-
-<f:comment>
     <!-- WIDTH FOR LARGE -->
 </f:comment>
 <f:variable name="lgWidth">
@@ -29,7 +18,7 @@
     <!-- WIDTH FOR MEDIUM -->
 </f:comment>
 <f:variable name="mdWidth">
-    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
+    <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.md}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.md}</f:then>
         <f:else>{settings.responsiveimages.default.width.lg}</f:else>
     </f:if>
@@ -68,7 +57,7 @@
             image="{file}"
             width="{xlWidth}"
             pictureClass="{pictureClass}"
-            fileExtension = "webP"
+            fileExtension = "{settings.responsiveimages.fileExtension}"
             class="{imageClass}"
             addWebp="{settings.responsiveimages.addWebP}"
             loading="{settings.responsiveimages.lazyLoading}"
