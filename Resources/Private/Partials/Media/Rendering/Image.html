@@ -3,40 +3,55 @@
     xmlns:pict="http://typo3.org/ns/Rintisch/PictureExtend/ViewHelpers"
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
     data-namespace-typo3-fluid="true">
-
-<f:comment><!-- Width for extra large --></f:comment>
+<f:comment>
+    <!-- WIDTH FOR EXTRA LARGE -->
+</f:comment>
 <f:variable name="xlWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.xl}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.xl}</f:then>
         <f:else>{settings.responsiveimages.default.width.xl}</f:else>
     </f:if>
 </f:variable>
+<f:variable name="xlWidth">{xlWidth / imageCols}</f:variable>
 
-<f:comment><!-- Width for large --></f:comment>
+<f:comment>
+    <!-- WIDTH FOR LARGE -->
+</f:comment>
 <f:variable name="lgWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.lg}</f:then>
         <f:else>{settings.responsiveimages.default.width.lg}</f:else>
     </f:if>
 </f:variable>
+<f:variable name="lgWidth">{lgWidth / imageCols}</f:variable>
 
-<f:comment><!-- Width for medium --></f:comment>
+<f:comment>
+    <!-- WIDTH FOR MEDIUM -->
+</f:comment>
 <f:variable name="mdWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.lg}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.md}</f:then>
         <f:else>{settings.responsiveimages.default.width.lg}</f:else>
     </f:if>
 </f:variable>
+<f:variable name="mdWidth">{mdWidth / imageCols}</f:variable>
 
-<f:comment><!-- Width for small --></f:comment>
+<f:comment>
+    <!-- WIDTH FOR SMALL -->
+</f:comment>
 <f:variable name="smWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.sm}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.sm}</f:then>
         <f:else>{settings.responsiveimages.default.width.sm}</f:else>
     </f:if>
 </f:variable>
+<f:variable name="smWidth">{smWidth / imageCols}</f:variable>
 
-<f:comment><!-- Width for extrasmall --></f:comment>
+<f:comment>
+    <!-- WIDTH FOR XS
+        The layout for this size is always 1 column. So we do not divide it by the columns
+    -->
+</f:comment>
 <f:variable name="xsWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.xs}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.xs}</f:then>
@@ -53,15 +68,15 @@
             image="{file}"
             width="{xlWidth}"
             pictureClass="{pictureClass}"
+            fileExtension = "webP"
             class="{imageClass}"
             addWebp="{settings.responsiveimages.addWebP}"
             loading="{settings.responsiveimages.lazyLoading}"
             sources="{
-        xl: {width: '{xlWidth}', cropVariant: 'xl'},
         lg: {width: '{lgWidth}', cropVariant: 'lg'},
-        md: {width: '{mdWidth}', cropVariant: 'md'},
+        md: {width: '{lgWidth}', cropVariant: 'lg'},
         sm: {width: '{smWidth}', cropVariant: 'sm'},
-        xs: {width: '{xsWidth}', cropVariant: 'sm'}
+        xs: {width: '{smWidth}', cropVariant: 'sm'}
     }"
             alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"/>
 

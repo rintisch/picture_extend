@@ -25,7 +25,7 @@ plugin.tx_picture {
     sm = 640
     md = 768
     lg = 1024
-    lg = 1280
+    xl = 1280
   }
 }
 
@@ -39,14 +39,14 @@ lib.contentElement.settings {
   }
 
   responsiveimages {
-    addWebP = 1
+    addWebP = 0
     lazyLoading = 1
 
     default.width {
-      xs = 576
+      xs = 640
       sm = 768
-      md = 1280
-      lg = 1600
+      md = 1024
+      lg = 1280
     }
   }
 }

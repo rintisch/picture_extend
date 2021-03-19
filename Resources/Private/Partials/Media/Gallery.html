@@ -9,15 +9,17 @@
         <e:renderWebpackLinkTags entryName="lightbox"/>
     </f:if>
 
-    <f:variable name="imagecols">1</f:variable>
+    <f:variable name="imageCols">1</f:variable>
     <f:if condition="{files -> f:count()} > 1">
-        <f:variable name="imagecols">{data.imagecols as integer}</f:variable>
+        <f:variable name="imageCols">{data.imagecols as integer}</f:variable>
     </f:if>
+
+    <f:comment><!-- for purgeCSS: grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6 grid-cols-7 --></f:comment>
     <div
-        class="js-gallery w-full relative overflow-hidden grid grid-cols-{imagecols} gap-2">
+        class="js-gallery w-full relative overflow-hidden grid grid-cols-{imageCols} gap-6">
         <f:for each="{files}" as="file">
             <div class="w-full h-full">
-                <f:render partial="Media/Type/Image" arguments="{file: file, data: data, settings: settings,  pictureClass: 'rounded flex overflow-hidden', imageClass: ''}"/>
+                <f:render partial="Media/Type" arguments="{file: file, data: data, settings: settings,  pictureClass: 'rounded flex overflow-hidden', imageClass: '', imageCols: imageCols}"/>
             </div>
         </f:for>
     </div>
