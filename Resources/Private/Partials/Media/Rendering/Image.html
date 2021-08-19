@@ -12,7 +12,9 @@
         <f:else>{settings.responsiveimages.default.width.lg}</f:else>
     </f:if>
 </f:variable>
-<f:variable name="lgWidth">{lgWidth / imageCols}</f:variable>
+<f:if condition="{imageCols}">
+    <f:variable name="lgWidth">{lgWidth / imageCols}</f:variable>
+</f:if>
 
 <f:comment>
     <!-- WIDTH FOR MEDIUM -->
@@ -20,10 +22,12 @@
 <f:variable name="mdWidth">
     <f:if condition="{settings.responsiveimages.contentelements.{data.CType}.width.md}">
         <f:then>{settings.responsiveimages.contentelements.{data.CType}.width.md}</f:then>
-        <f:else>{settings.responsiveimages.default.width.lg}</f:else>
+        <f:else>{settings.responsiveimages.default.width.md}</f:else>
     </f:if>
 </f:variable>
-<f:variable name="mdWidth">{mdWidth / imageCols}</f:variable>
+<f:if condition="{imageCols}">
+    <f:variable name="mdWidth">{mdWidth / imageCols}</f:variable>
+</f:if>
 
 <f:comment>
     <!-- WIDTH FOR SMALL -->
@@ -34,7 +38,9 @@
         <f:else>{settings.responsiveimages.default.width.sm}</f:else>
     </f:if>
 </f:variable>
-<f:variable name="smWidth">{smWidth / imageCols}</f:variable>
+<f:if condition="{imageCols}">
+    <f:variable name="smWidth">{smWidth / imageCols}</f:variable>
+</f:if>
 
 <f:comment>
     <!-- WIDTH FOR XS
@@ -47,6 +53,9 @@
         <f:else>{settings.responsiveimages.default.width.xs}</f:else>
     </f:if>
 </f:variable>
+<f:if condition="{imageCols}">
+    <f:variable name="xsWidth">{xsWidth / imageCols}</f:variable>
+</f:if>
 
 <f:if condition="{file.originalFile.properties.extension} == svg">
     <f:then>
@@ -55,9 +64,9 @@
     <f:else>
         <i:image
             image="{file}"
-            width="{xlWidth}"
+            width="{lgWidth}"
             pictureClass="{pictureClass}"
-            fileExtension = "{settings.responsiveimages.fileExtension}"
+            fileExtension="{settings.responsiveimages.fileExtension}"
             class="{imageClass}"
             addWebp="{settings.responsiveimages.addWebP}"
             loading="{settings.responsiveimages.lazyLoading}"
