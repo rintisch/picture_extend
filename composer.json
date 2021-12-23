@@ -11,9 +11,9 @@
     "TYPO3 CMS"
   ],
   "require": {
-    "typo3/cms-core": "^9.5 || ^10.2",
-    "typo3/cms-fluid-styled-content": "^9.5 || ^10.2",
-    "b13/picture": "^1.0.3"
+    "typo3/cms-core": "^9.5 || ^10.4 || ^11.5",
+    "typo3/cms-fluid-styled-content": "^9.5 || ^10.4 || ^11.5",
+    "b13/picture": "^1.1"
   },
   "autoload": {
     "psr-4": {
