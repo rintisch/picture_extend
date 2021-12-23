@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" date="2021-12-23T18:34:02+01:00">
+		<body>
+			<trans-unit id="crop_variants.sm.label">
+				<source>Small (sm) &#8673;</source>
+			</trans-unit>
+			<trans-unit id="crop_variants.md.label">
+				<source>Medium (md) &#8673;</source>
+			</trans-unit>
+			<trans-unit id="crop_variants.lg.label">
+				<source>Large (lg) &#8673;</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -15,18 +15,6 @@ To use it with webpack encore include the following in your `webpack.config.js` 
 
 Now a gallery with activated `image_zoom` will have a lightbox.
 
-## Cropping
-**Usage:** Is used by editors in TYPO3 backend to set image cropping for different viewports.
-
-For cropping [EXT:cropvariantsbuilder](https://github.com/josefglatz/cropvariantsbuilder) by Josef Glatz is used.
-
-Two steps are needed:
-1. The site package has a `EXT:the_site_package/Configuration/ImageManipulation/CropVariants.yaml`. In this file the needed CropVariants are defined.
-1. The site package has e.g. a `EXT:the_site_package/Configuration/TCA/Overrides/content_element_name_of_content_element.php` (name doesn't really matter...). It defines the crop variants for the image field of a content element.
-
-For further instructions watch the documentation of the [EXT:cropvariantsbuilder](https://github.com/josefglatz/cropvariantsbuilder).
-
-
 ## Definition of output dimensions
 **Usage:** Define how big the images shall be rendered. Defined for every cropVariant.
 
