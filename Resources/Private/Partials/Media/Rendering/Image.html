@@ -1,6 +1,5 @@
 <html
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:pict="http://typo3.org/ns/Rintisch/PictureExtend/ViewHelpers"
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
     data-namespace-typo3-fluid="true">
 <f:comment>
@@ -59,7 +58,10 @@
 
 <f:if condition="{file.originalFile.properties.extension} == svg">
     <f:then>
-        <pict:inlineSvg image="{file}" class="w-full h-auto"/>
+        <f:comment><!-- Use simple image viewhelper for SVGs --></f:comment>
+        <f:image
+            alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"
+            image="{file}"/>
     </f:then>
     <f:else>
         <i:image
@@ -77,7 +79,6 @@
         xs: {width: '{smWidth}', cropVariant: 'sm'}
     }"
             alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"/>
-
     </f:else>
 </f:if>
 </html>
