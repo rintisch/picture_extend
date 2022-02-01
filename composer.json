@@ -1,7 +1,7 @@
 {
   "name": "rintisch/picture-extend",
   "type": "typo3-cms-extension",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Responsive Images in TYPO3, extends EXT:picture.",
   "homepage": "https://github.com/rintisch",
   "license": [
@@ -11,8 +11,8 @@
     "TYPO3 CMS"
   ],
   "require": {
-    "typo3/cms-core": "^9.5 || ^10.4 || ^11.5",
-    "typo3/cms-fluid-styled-content": "^9.5 || ^10.4 || ^11.5",
+    "typo3/cms-core": "^11.5",
+    "typo3/cms-fluid-styled-content": "^11.5",
     "b13/picture": "^1.1"
   },
   "autoload": {

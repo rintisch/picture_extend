@@ -11,7 +11,6 @@ namespace Rintisch\PictureExtend\ViewHelpers;
 
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -42,7 +41,7 @@ class InlineSvgViewHelper extends AbstractViewHelper
         $this->registerArgument('class', 'string', 'Css class for the svg');
         $this->registerArgument('width', 'string', 'Width of the svg.', false);
         $this->registerArgument('height', 'string', 'Height of the svg.', false);
-        $this->registerArgument('fillWith','string', 'Color to fill the svg');
+        $this->registerArgument('fillWith', 'string', 'Color to fill the svg');
     }
 
     /**
@@ -75,19 +74,19 @@ class InlineSvgViewHelper extends AbstractViewHelper
             $svgContent = trim(preg_replace('/<script[\s\S]*?>[\s\S]*?<\/script>/i', '', $svgContent));
 
             // Exit if file does not contain content
-            if (empty($svgContent)) {
+            if ($svgContent === '') {
                 return '';
             }
 
-            // Disables the functionality to allow external entities to be loaded when parsing the XML, must be kept
-            $previousValueOfEntityLoader = libxml_disable_entity_loader(true);
             $svgElement = simplexml_load_string($svgContent);
-            libxml_disable_entity_loader($previousValueOfEntityLoader);
+            if (!$svgElement instanceof \SimpleXMLElement) {
+                return '';
+            }
 
             // Calculate height from width (needed for IE11)
             //get relevant values from viewbox
             $height = (int)$arguments['height'];
-            if($arguments['width'] && !$arguments['height']) {
+            if ($arguments['width'] && !$arguments['height']) {
                 $viewBoxValues = explode(' ', (string)$svgElement['viewBox']);
                 $viewBoxWidth = $viewBoxValues[2];
                 $viewBoxHeight = $viewBoxValues[3];
@@ -100,9 +99,9 @@ class InlineSvgViewHelper extends AbstractViewHelper
             $svgElement = self::setAttribute($svgElement, 'height', $height);
 
             // Overwrite any fill attributes with given value
-            if($arguments['fillWith']){
+            if ($arguments['fillWith']) {
                 $filledElements = $svgElement->xpath('//*[@fill]');
-                if($filledElements){
+                if ($filledElements) {
                     foreach ($filledElements as $filledElement) {
                         self::setAttribute($filledElement, 'fill', (string)$arguments['fillWith']);
                     }
@@ -127,12 +126,7 @@ class InlineSvgViewHelper extends AbstractViewHelper
         }
     }
 
-    /**
-     * @param \SimpleXMLElement $element
-     * @param string $attribute
-     * @param mixed $value
-     */
-    protected static function setAttribute(\SimpleXMLElement $element, $attribute, $value): \SimpleXMLElement
+    protected static function setAttribute(\SimpleXMLElement $element, string $attribute, ?string $value): \SimpleXMLElement
     {
         if ($value) {
             if (isset($element->attributes()->$attribute)) {
@@ -144,17 +138,8 @@ class InlineSvgViewHelper extends AbstractViewHelper
 
         return $element;
     }
-
-    /**
-     * Return an instance of ImageService using object manager
-     *
-     * @return object
-     * @throws \TYPO3\CMS\Extbase\Object\Exception
-     */
     protected static function getImageService()
     {
-        /** @var ObjectManager $objectManager */
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        return $objectManager->get(ImageService::class);
+        return GeneralUtility::makeInstance(ImageService::class);
     }
 }
