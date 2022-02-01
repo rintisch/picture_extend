@@ -2,9 +2,9 @@
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <f:if condition="{file.properties.link}">
+    <f:if condition="{file.link}">
         <f:then>
-            <f:link.typolink parameter="{file.properties.link}" title="{file.properties.title}">
+            <f:link.typolink parameter="{file.link}" title="{file.title}">
                 <f:render partial="Media/Rendering/Image" arguments="{file: file, data: data, settings: settings, pictureClass: pictureClass, imageClass: imageClass, imageCols: imageCols}"/>
             </f:link.typolink>
         </f:then>

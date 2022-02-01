@@ -40,7 +40,7 @@ lib.contentElement.settings {
 
   responsiveimages {
     # set fileExtension to webP in your sitePackage if you do not want to use jpg
-    # fileExtension =
+    fileExtension = webP
     addWebP = 0
     lazyLoading = 1
 
