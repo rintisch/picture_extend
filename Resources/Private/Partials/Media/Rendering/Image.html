@@ -16,6 +16,10 @@
     <f:variable name="lgWidth">{lgWidth / imageCols}</f:variable>
 </f:if>
 
+<f:if condition="{lgWidth} > {file.properties.width}">
+    <f:variable name="lgWidth">{file.properties.width}</f:variable>
+</f:if>
+
 <f:comment>
     <!-- WIDTH FOR MEDIUM -->
 </f:comment>
@@ -29,6 +33,10 @@
     <f:variable name="mdWidth">{mdWidth / imageCols}</f:variable>
 </f:if>
 
+<f:if condition="{mdWidth} > {file.properties.width}">
+    <f:variable name="mdWidth">{file.properties.width}</f:variable>
+</f:if>
+
 <f:comment>
     <!-- WIDTH FOR SMALL -->
 </f:comment>
@@ -40,6 +48,10 @@
 </f:variable>
 <f:if condition="{imageCols}">
     <f:variable name="smWidth">{smWidth / imageCols}</f:variable>
+</f:if>
+
+<f:if condition="{smWidth} > {file.properties.width}">
+    <f:variable name="smWidth">{file.properties.width}</f:variable>
 </f:if>
 
 <f:comment>
@@ -56,6 +68,11 @@
 <f:if condition="{imageCols}">
     <f:variable name="xsWidth">{xsWidth / imageCols}</f:variable>
 </f:if>
+
+<f:if condition="{xsWidth} > {file.properties.width}">
+    <f:variable name="xsWidth">{file.properties.width}</f:variable>
+</f:if>
+
 
 <f:if condition="{file.originalFile.properties.extension} == svg">
     <f:then>
