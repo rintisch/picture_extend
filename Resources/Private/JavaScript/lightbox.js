@@ -6,4 +6,6 @@ import '../Scss/lightbox.scss';
 
 import baguetteBox from 'baguettebox.js';
 
-baguetteBox.run('.js-gallery');
+baguetteBox.run('.js-gallery', {
+  filter: /.+\.(gif|jpe?g|png|svg|webp)/i,
+});

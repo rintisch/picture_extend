@@ -73,7 +73,7 @@
         <f:comment><!-- Use simple image viewhelper for SVGs --></f:comment>
         <f:image
             alt="{f:if(condition: '{file.properties.alternative}', then: '{file.properties.alternative}', else: '')}"
-            image="{file}"/>
+            image="{file}" class="{f:if(condition: '{imageClass}', then: ' {imageClass}')}" />
     </f:then>
     <f:else>
         <i:image
