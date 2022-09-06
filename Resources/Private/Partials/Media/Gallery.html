@@ -14,7 +14,7 @@
             <e:renderWebpackScriptTags entryName="lightbox"/>
             <e:renderWebpackLinkTags entryName="lightbox"/>
 
-            <div class="js-gallery">
+            <div class="js-gallery{f:if(condition: "{settings.picture_extend.additionalCssClasses.gallery}", then: " {settings.picture_extend.additionalCssClasses.gallery}")}">
                 <f:for each="{files}" as="file">
                     <f:render partial="Media/Type" arguments="{file: file, data: data, settings: settings, imageCols: imageCols}"/>
                 </f:for>

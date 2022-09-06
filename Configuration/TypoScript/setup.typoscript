@@ -38,6 +38,12 @@ lib.contentElement.settings {
     maxWidth = {$lightbox.maxWidth}
   }
 
+  // Set custom CSS classes to adapt output to your needs
+  picture_extend.additionalCssClasses {
+    // CSS class for the container of the images in a gallery, see `Resources/Private/Partials/Media/Gallery.html`
+    gallery =
+  }
+
   responsiveimages {
     # set fileExtension to webP in your sitePackage if you do not want to use jpg
     fileExtension = webP
