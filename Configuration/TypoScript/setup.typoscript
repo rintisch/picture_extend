@@ -1,61 +1,9 @@
-######################
-#### DEPENDENCIES ####
-######################
-@import 'EXT:picture/Configuration/TypoScript/setup.typoscript'
-
-####################
-#### ROOT PATHS ####
-####################
-lib.contentElement {
-  partialRootPaths {
-    52 = EXT:picture_extend/Resources/Private/Partials/
-  }
-}
-
-##############################
-#### EXT:picture SETTINGS ####
-##############################
-plugin.tx_picture {
-  retina {
-    2 = 2x
-  }
-
-  breakpoints {
-    xs = 0
-    sm = 640
-    md = 768
-    lg = 1024
-    xl = 1280
-  }
-}
-
 lib.contentElement.settings {
-
   // define maxHeight and maxWidth in your `config.yaml` as described in:
   // https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.4/Feature-91080-SiteSettingsAsTsConstantsAndInTsConfig.html
   lightbox {
     maxHeight = {$lightbox.maxHeight}
     maxWidth = {$lightbox.maxWidth}
-  }
-
-  // Set custom CSS classes to adapt output to your needs
-  picture_extend.additionalCssClasses {
-    // CSS class for the container of the images in a gallery, see `Resources/Private/Partials/Media/Gallery.html`
-    gallery =
-  }
-
-  responsiveimages {
-    # set fileExtension to webP in your sitePackage if you do not want to use jpg
-    fileExtension = webP
-    addWebP = 0
-    lazyLoading = 1
-
-    default.width {
-      xs = 640
-      sm = 768
-      md = 1024
-      lg = 1280
-    }
   }
 }
 
