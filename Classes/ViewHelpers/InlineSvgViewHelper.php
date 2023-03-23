@@ -86,6 +86,7 @@ class InlineSvgViewHelper extends AbstractViewHelper
             // Calculate height from width (needed for IE11)
             //get relevant values from viewbox
             $height = (int)$arguments['height'];
+            $width = (int)$arguments['width'];
             if ($arguments['width'] && !$arguments['height']) {
                 $viewBoxValues = explode(' ', (string)$svgElement['viewBox']);
                 $viewBoxWidth = $viewBoxValues[2];
@@ -94,8 +95,11 @@ class InlineSvgViewHelper extends AbstractViewHelper
             }
 
             // Override css class
-            $svgElement = self::setAttribute($svgElement, 'class', filter_var(trim((string)$arguments['class']), FILTER_SANITIZE_STRING));
-            $svgElement = self::setAttribute($svgElement, 'width', (int)$arguments['width']);
+            $class = htmlspecialchars($class ?? '');
+            $svgElement = self::setAttribute($svgElement, 'class', $class);
+            $width = intval($width) > 0 ? (string) intval($width) : null;
+            $svgElement = self::setAttribute($svgElement, 'width', $width);
+            $height = intval($height) > 0 ? (string) intval($height) : null;
             $svgElement = self::setAttribute($svgElement, 'height', $height);
 
             // Overwrite any fill attributes with given value
