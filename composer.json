@@ -1,7 +1,7 @@
 {
   "name": "rintisch/picture-extend",
   "type": "typo3-cms-extension",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Tool for picture / icons in TYPO3.",
   "homepage": "https://github.com/rintisch",
   "license": [
@@ -11,8 +11,8 @@
     "TYPO3 CMS"
   ],
   "require": {
-    "typo3/cms-core": "^11.5",
-    "typo3/cms-fluid-styled-content": "^11.5"
+    "typo3/cms-core": "^11.5 || ^12.2",
+    "typo3/cms-fluid-styled-content": "^11.5 || ^12.2"
   },
   "autoload": {
     "psr-4": {
