@@ -2,7 +2,7 @@ Picture extend
 ==============================================================
 
 This extension contains extends some small tooling for visual stuff.
-** It has no longer anything to do with EXT:picture of b13.** All settings regarding EXT:picture
+**It has no longer anything to do with EXT:picture of b13.** All settings regarding EXT:picture
 need to be done yourself and are no longer (beginning with with v3.0.0) handled by this extension.
 
 ## Lightbox
