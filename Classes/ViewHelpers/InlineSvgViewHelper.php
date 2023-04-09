@@ -95,6 +95,7 @@ class InlineSvgViewHelper extends AbstractViewHelper
             }
 
             // Override css class
+            $class = (string)$arguments['class'];
             $class = htmlspecialchars($class ?? '');
             $svgElement = self::setAttribute($svgElement, 'class', $class);
             $width = intval($width) > 0 ? (string) intval($width) : null;
